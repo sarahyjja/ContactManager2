@@ -1,20 +1,20 @@
-require 'contact'
+require 'data_manipulation'
 
-RSpec.describe Contact do
+RSpec.describe DataManipulation do
 
   it "create a new instance of contact and return true if it's an object" do
-    addressbook = Contact.new
+    addressbook = DataManipulation.new
 
     expect(addressbook.is_a?Object).to eq(true)
   end
 
   it "says if @all_contacts is in an [empty bucket]" do
-    addressbook = Contact.new
+    addressbook = DataManipulation.new
     expect(addressbook.all_contacts).to eq([])
   end
 
   it "says if @all_contacts can receive a first name" do
-    addressbook = Contact.new
+    addressbook = DataManipulation.new
     addressbook.create_new_contact("Sarah", "Kharraz", "sarah@email.com", "123456")
     expect(addressbook.all_contacts).to eq([{
         "first_name" => "Sarah",
@@ -24,10 +24,6 @@ RSpec.describe Contact do
       }])
   end
 
-  # it "creates a new contact using the Person class and adds it to @contacts" do
-  #   allow($stdin).to receive(:gets).and_return("sarah", "kara")
-  #   addressbook = Contact.new
-  #   addressbook.gabarit_new_person
-  #   expect(addressbook.all_contacts.empty?).to eq(true)
-  # end
+  it
+
 end
