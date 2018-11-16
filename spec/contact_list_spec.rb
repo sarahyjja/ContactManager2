@@ -139,6 +139,47 @@ RSpec.describe ContactList do
       "email" => "sarah@example.com",
       "phone" => 012344556
       }])
-
   end
+
+  it "search for a contact by any key and view their details" do
+    contact_list = ContactList.new
+    contact_list.add_new_contact("Marion", "Faceless", "marion@example.com", 012344556)
+    contact_list.add_new_contact("John", "Smith", "john@example.com", 012344556)
+    contact_list.add_new_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
+
+    expect(contact_list.search_by("first_name", "Sarah")).to eq([{
+      "first_name" => "Sarah",
+      "last_name" => "Kharraz",
+      "email" => "sarah@example.com",
+      "phone" => 012344556
+      }])
+  end
+
+  it "saves the contacts to a file" do
+    contact_list = ContactList.new
+    contact_list.add_new_contact("Marion", "Faceless", "marion@example.com", 012344556)
+    contact_list.add_new_contact("John", "Smith", "john@example.com", 012344556)
+    contact_list.add_new_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
+    contact_list.sort_by("first_name")
+
+    expect(contact_list.save_to_file).to eq([{
+        "first_name" => "John",
+        "last_name" => "Smith",
+        "email" => "john@example.com",
+        "phone" => 012344556
+      },
+      {
+        "first_name" => "Marion",
+        "last_name" => "Faceless",
+        "email" => "marion@example.com",
+        "phone" => 012344556
+      },
+      {
+        "first_name" => "Sarah",
+        "last_name" => "Kharraz",
+        "email" => "sarah@example.com",
+        "phone" => 012344556
+        }])
+  end
+
 end
