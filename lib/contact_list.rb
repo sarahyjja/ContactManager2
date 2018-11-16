@@ -14,12 +14,11 @@ attr_accessor :list
     @list << {
         "first_name" => first_name,
         "last_name" => last_name,
-        "email_address" => email,
-        "phone_number" => phone
+        "email" => email,
+        "phone" => phone
       }
       p @list
   end
-
 
   def sort_by(key)
     @list.sort_by! do |person|
@@ -28,9 +27,9 @@ attr_accessor :list
     p @list
   end
 
-
-
-# def search(last_name)
-#   @list.map { |person| person == last_name}
-# end
+  def search(last_name)
+    @list.select do |person|
+      person["last_name"] == last_name
+    end
+  end
 end
