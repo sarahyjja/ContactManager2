@@ -20,15 +20,15 @@ attr_accessor :list
       p @list
   end
 
-  # def list
-  #   @list.sort_by do |person|
-  #     person.last_name
-  #   end
-  #   # do |person|
-  #   #   person.first_name
-  #   # end
-  #   #_by { |key, value| value }
-  # end
+
+  def sort_by(key)
+    @list.sort_by! do |person|
+      person[key]
+    end
+    p @list
+  end
+
+
 
 # def search(last_name)
 #   @list.map { |person| person == last_name}
