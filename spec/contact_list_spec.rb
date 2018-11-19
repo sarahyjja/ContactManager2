@@ -3,6 +3,7 @@
 
 require 'contact_list'
 require 'person'
+require 'json'
 
 RSpec.describe ContactList do
   it "Verify if the contact_list is empty" do
