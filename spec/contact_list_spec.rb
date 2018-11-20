@@ -166,4 +166,28 @@ RSpec.describe ContactList do
     expect(contact_list.file_agenda.empty?).to eq(false)
   end
 
+  it "Load the contacts from that file when restarting the program" do
+    contact_list = ContactList.new
+    contact_list.sort_by("first_name")
+
+    expect(contact_list.list).to eq([{
+        "first_name" => "John",
+        "last_name" => "Smith",
+        "email" => "john@example.com",
+        "phone" => 012344556
+      },
+      {
+        "first_name" => "Marion",
+        "last_name" => "Faceless",
+        "email" => "marion@example.com",
+        "phone" => 012344556
+      },
+      {
+        "first_name" => "Sarah",
+        "last_name" => "Kharraz",
+        "email" => "sarah@example.com",
+        "phone" => 012344556
+        }])
+
+  end
 end

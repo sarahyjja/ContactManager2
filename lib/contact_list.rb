@@ -8,6 +8,9 @@ attr_accessor :list, :file_agenda
   def initialize
     @list = []
     @file_agenda = File.read("./lib/file_agenda.json")
+    self.get_contacts_from_file("./lib/file_agenda.json").each do |contact|
+      @list << contact
+    end
   end
 
   def add_new_contact(first_name, last_name, email, phone)
@@ -30,6 +33,12 @@ attr_accessor :list, :file_agenda
         File.write("./lib/file_agenda.json", current_contacts.to_json)
   end
 
+  def get_contacts_from_file(json_file)
+    file_to_parse = File.read(json_file)
+    current_contacts = JSON.parse(file_to_parse)
+    current_contacts
+  end
+
   def sort_by(key)
     @list.sort_by! do |person|
       person[key]
@@ -48,18 +57,4 @@ attr_accessor :list, :file_agenda
       person[key] == search_term
     end
   end
-
-
-# def save_to_file
-#   File.open("./lib/file_agenda.json", "w") do |file|
-#     @list.each do |contact|
-#       file.write(contact.to_json)
-#       # file << contact
-#     end
-#   end
-#    current_contacts = File.read("./lib/file_agenda.json")
-#    #current_contacts = JSON.generate({"first_name" => "Marion","last_name" => "Faceless","email" => "marion@example.com","phone" => 012344556})
-#    puts JSON.parse(current_contacts)
-# end
-
 end
