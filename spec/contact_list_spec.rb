@@ -8,11 +8,13 @@ require 'json'
 RSpec.describe ContactList do
   it "Verify if the contact_list is empty" do
     contact_list = ContactList.new
+    contact_list.delete_all_contacts
     expect(contact_list.list).to eq([])
   end
 
   it "hold info inside" do
     contact_list = ContactList.new
+    contact_list.delete_all_contacts
     contact_list.add_new_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
     expect(contact_list.list).to eq([{
       "first_name" => "Sarah",
@@ -24,7 +26,7 @@ RSpec.describe ContactList do
 
   it "stores multiple contacts" do
     contact_list = ContactList.new
-
+    contact_list.delete_all_contacts
     contact_list.add_new_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_new_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_new_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -52,6 +54,7 @@ RSpec.describe ContactList do
 
   it "displays a list in alphabetical order by last_name" do
     contact_list = ContactList.new
+    contact_list.delete_all_contacts
     contact_list.add_new_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_new_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_new_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -78,6 +81,7 @@ RSpec.describe ContactList do
 
   it "displays a list in alphabetical order by first_name" do
     contact_list = ContactList.new
+    contact_list.delete_all_contacts
     contact_list.add_new_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_new_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_new_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -104,6 +108,7 @@ RSpec.describe ContactList do
 
   it "displays a list in alphabetical order by email" do
     contact_list = ContactList.new
+    contact_list.delete_all_contacts
     contact_list.add_new_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_new_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_new_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -130,6 +135,7 @@ RSpec.describe ContactList do
 
   it "search for a contact by last_name and view their details" do
     contact_list = ContactList.new
+    contact_list.delete_all_contacts
     contact_list.add_new_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_new_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_new_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -144,6 +150,7 @@ RSpec.describe ContactList do
 
   it "search for a contact by any key and view their details" do
     contact_list = ContactList.new
+    contact_list.delete_all_contacts
     contact_list.add_new_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_new_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_new_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -158,6 +165,7 @@ RSpec.describe ContactList do
 
   it "saves the contacts to a file" do
     contact_list = ContactList.new
+    contact_list.delete_all_contacts
     contact_list.add_new_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_new_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_new_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -168,6 +176,10 @@ RSpec.describe ContactList do
 
   it "Load the contacts from that file when restarting the program" do
     contact_list = ContactList.new
+    contact_list.delete_all_contacts
+    contact_list.add_new_contact("Marion", "Faceless", "marion@example.com", 012344556)
+    contact_list.add_new_contact("John", "Smith", "john@example.com", 012344556)
+    contact_list.add_new_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
     contact_list.sort_by("first_name")
 
     expect(contact_list.list).to eq([{
@@ -188,6 +200,5 @@ RSpec.describe ContactList do
         "email" => "sarah@example.com",
         "phone" => 012344556
         }])
-
   end
 end

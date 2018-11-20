@@ -8,9 +8,9 @@ attr_accessor :list, :file_agenda
   def initialize
     @list = []
     @file_agenda = File.read("./lib/file_agenda.json")
-    self.get_contacts_from_file("./lib/file_agenda.json").each do |contact|
-      @list << contact
-    end
+    # self.get_contacts_from_file("./lib/file_agenda.json").each do |contact|
+    #   @list << contact
+    # end
   end
 
   def add_new_contact(first_name, last_name, email, phone)
@@ -39,6 +39,11 @@ attr_accessor :list, :file_agenda
     current_contacts
   end
 
+  def delete_all_contacts
+    File.open("./lib/file_agenda.json", 'w') {|file| file.truncate(0) }
+    File.write("./lib/file_agenda.json", "[]")
+  end
+
   def sort_by(key)
     @list.sort_by! do |person|
       person[key]
@@ -50,6 +55,7 @@ attr_accessor :list, :file_agenda
     @list.select do |person|
       person["last_name"] == last_name
     end
+    p @list
   end
 
   def search_by(key, search_term)

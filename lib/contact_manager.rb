@@ -8,4 +8,9 @@ class ContactManager
     @contact_list = ContactList.new
   end
 
+  def display_contacts
+    @list.each do |key, value|
+    puts "#{key}: #{value}."
+    end
+  end
 end
