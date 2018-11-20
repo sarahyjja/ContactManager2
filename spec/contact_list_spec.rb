@@ -163,7 +163,7 @@ RSpec.describe ContactList do
     contact_list.add_new_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
     contact_list.sort_by("first_name")
 
-    expect(contact_list.save_to_file).to eq(people = [{
+    expect(contact_list.list).to eq([{
         first_name:"John",
         last_name:"Smith",
         email:"john@example.com",

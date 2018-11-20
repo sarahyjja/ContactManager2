@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+# Allows you to require any file in lib
+$: << File.join(File.dirname(__FILE__), '..', 'lib')
+
+require 'contact_list'
+require 'person'
+
+contact_list = ContactList.new
+contact_list.add_new_contact("Sarah", "Kharraz", "sarah@hello.com", 1234567890)
