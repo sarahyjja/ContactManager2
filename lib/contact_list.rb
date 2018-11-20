@@ -3,10 +3,11 @@ require 'json'
 
 class ContactList
 
-attr_accessor :list
+attr_accessor :list, :file_agenda
 
   def initialize
     @list = []
+    @file_agenda = File.read("./lib/file_agenda.json")
   end
 
   def add_new_contact(first_name, last_name, email, phone)
