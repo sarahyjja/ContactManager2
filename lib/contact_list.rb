@@ -55,7 +55,6 @@ attr_accessor :list, :file_agenda
     @list.select do |person|
       person["last_name"] == last_name
     end
-    p @list
   end
 
   def search_by(key, search_term)
