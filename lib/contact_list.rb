@@ -14,6 +14,8 @@ attr_accessor :list, :file_agenda
   end
 
   def add_new_contact(first_name, last_name, email, phone)
+    # print "Add a new contact"
+    # new_contact = $stdin.gets.chomp
     new_contact = Person.new(first_name, last_name, email, phone)
     @list << {
         "first_name" => first_name,
@@ -44,9 +46,10 @@ attr_accessor :list, :file_agenda
     File.write("./lib/file_agenda.json", "[]")
   end
 
-  def sort_by(key)
+  def sort_by(person_detail)
+    #key = $stdin.gets.chomp
     @list.sort_by! do |person|
-      person[key]
+      person[person_detail]
     end
     # p @list
   end
@@ -57,9 +60,9 @@ attr_accessor :list, :file_agenda
     end
   end
 
-  def search_by(key, search_term)
+  def search_by(key, person_detail)
     @list.select do |person|
-      person[key] == search_term
+      person[key] == person_detail
     end
   end
 end
