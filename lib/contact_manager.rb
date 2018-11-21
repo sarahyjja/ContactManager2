@@ -16,11 +16,11 @@ class ContactManager
   #   print "#{key}: #{value}."
   #   end
   # end
-  def create_new_contact
-    new_contact = Person.new(first_name, last_name, email, phone)
+  def create_new_contact(last_name, email, phone)
+    new_contact = Person.new
     print "Add a new contact"
     first_name = $stdin.gets.chomp
-    print "First name : #{first_name}"
+    #print "First name : #{first_name}"
     last_name = $stdin.gets.chomp
     print "Lsat name : #{last_name}"
 

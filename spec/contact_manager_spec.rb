@@ -14,13 +14,9 @@ RSpec.describe ContactManager do
     expect(contact_manager.contact_list.list).to eq([])
   end
 
-  it "displays one contact" do
+  it "asks to create a contact" do
     contact_manager = ContactManager.new
-    expect(contact_manager.create_new_contact(first_name, last_name, email, phone)).to eq([{
-        # "first_name" => "John",
-        # "last_name" => "Smith",
-        # "email" => "john@example.com",
-        # "phone" => 012344556
-        }])
+    allow($stdin).to receive(:gets).and_return("anna", "dupont", "ad@example.com", 012343232)
+    expect(contact_manager.create_new_contact(first_name, last_name, email, phone)).to eq("anna", "dupont", "ad@example.com", 012343232)
     end
 end
