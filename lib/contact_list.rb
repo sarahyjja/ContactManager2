@@ -21,7 +21,7 @@ attr_accessor :list, :file_agenda
         "email" => email,
         "phone" => phone
       }
-      p @list
+      # p @list
       json_file = File.read("./lib/file_agenda.json")
       current_contacts = JSON.load(json_file)
       current_contacts << {
@@ -48,7 +48,7 @@ attr_accessor :list, :file_agenda
     @list.sort_by! do |person|
       person[key]
     end
-    p @list
+    # p @list
   end
 
   def search(last_name)

@@ -1,4 +1,6 @@
 require 'contact_list'
+require 'person'
+require 'json'
 
 class ContactManager
 
@@ -8,9 +10,10 @@ class ContactManager
     @contact_list = ContactList.new
   end
 
-  def display_contacts
-    @list.each do |key, value|
-    puts "#{key}: #{value}."
-    end
-  end
+  # def display_contacts(first_name, last_name, email, phone)
+  #   @person = Person.new
+  #   @list.each do |key, value|
+  #   print "#{key}: #{value}."
+  #   end
+  # end
 end
