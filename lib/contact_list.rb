@@ -13,6 +13,11 @@ attr_accessor :list, :file_agenda
     # end
   end
 
+  def delete_all_contacts
+    File.open("./lib/file_agenda.json", 'w') {|file| file.truncate(0) }
+    File.write("./lib/file_agenda.json", "[]")
+  end
+
   def add_new_contact(first_name, last_name, email, phone)
     # print "Add a new contact"
     # new_contact = $stdin.gets.chomp
@@ -41,10 +46,6 @@ attr_accessor :list, :file_agenda
     current_contacts
   end
 
-  def delete_all_contacts
-    File.open("./lib/file_agenda.json", 'w') {|file| file.truncate(0) }
-    File.write("./lib/file_agenda.json", "[]")
-  end
 
   def sort_by(person_detail)
     #key = $stdin.gets.chomp

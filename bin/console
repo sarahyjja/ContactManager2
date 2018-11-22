@@ -5,6 +5,7 @@ $: << File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'contact_list'
 require 'person'
+require 'contact_manager'
 
 contact_list = ContactList.new
-contact_list.add_new_contact("Sarah", "Kharraz", "sarah@hello.com", 1234567890)
+contact_list.add_new_contact(first_name, last_name, email, phone)

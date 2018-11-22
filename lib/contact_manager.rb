@@ -4,10 +4,11 @@ require 'json'
 
 class ContactManager
 
-  attr_reader :contact_list, :list
+  attr_accessor :contact_list, :list, :person_detail
 
   def initialize
     @contact_list = ContactList.new
+
   end
 
   # def display_contacts(first_name, last_name, email, phone)
