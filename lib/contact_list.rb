@@ -6,19 +6,18 @@ class ContactList
 attr_accessor :list, :file_agenda
 
   def initialize
-    @list = []
-    @file_agenda = File.read("./lib/file_agenda.json")
+    file_agenda = File.read("./lib/file_agenda.json")
+    @list = JSON.load(file_agenda)
     # self.get_contacts_from_file("./lib/file_agenda.json").each do |contact|
     #   @list << contact
     # end
   end
 
-  def delete_all_contacts
-    File.open("./lib/file_agenda.json", 'w') {|file| file.truncate(0) }
-    File.write("./lib/file_agenda.json", "[]")
+  def get_contacts
+    @list
   end
 
-  def add_new_contact(first_name, last_name, email, phone)
+  def add_contact(first_name, last_name, email, phone)
     # print "Add a new contact"
     # new_contact = $stdin.gets.chomp
     new_contact = Person.new(first_name, last_name, email, phone)
@@ -37,7 +36,13 @@ attr_accessor :list, :file_agenda
           email: email,
           phone: phone
         }
+        delete_all_contacts
         File.write("./lib/file_agenda.json", current_contacts.to_json)
+  end
+
+  def delete_all_contacts
+    File.open("./lib/file_agenda.json", 'w') {|file| file.truncate(0) }
+    File.write("./lib/file_agenda.json", "[]")
   end
 
   def get_contacts_from_file(json_file)
@@ -46,13 +51,10 @@ attr_accessor :list, :file_agenda
     current_contacts
   end
 
-
   def sort_by(person_detail)
-    #key = $stdin.gets.chomp
     @list.sort_by! do |person|
       person[person_detail]
     end
-    # p @list
   end
 
   def search(last_name)
@@ -66,4 +68,6 @@ attr_accessor :list, :file_agenda
       person[key] == person_detail
     end
   end
+
+
 end
