@@ -14,7 +14,7 @@ RSpec.describe ContactList do
     def create_contact_list(list = file_list)
       ContactList.new(list)
     end
-    
+
   it "can be initialized with an empty list" do
     contact_list = create_contact_list([])
 
@@ -23,7 +23,6 @@ RSpec.describe ContactList do
 
   it "hold info inside" do
     contact_list = create_contact_list
-   contact_list.delete_all_contacts
     contact_list.add_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
     expect(contact_list.list).to eq([{
       "first_name" => "Sarah",
@@ -35,7 +34,6 @@ RSpec.describe ContactList do
 
   it "stores multiple contacts" do
     contact_list = create_contact_list
-    contact_list.delete_all_contacts
     contact_list.add_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -63,7 +61,6 @@ RSpec.describe ContactList do
 
   it "displays a list in alphabetical order by last_name" do
     contact_list = create_contact_list
-    contact_list.delete_all_contacts
     contact_list.add_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -90,7 +87,6 @@ RSpec.describe ContactList do
 
   it "displays a list in alphabetical order by first_name" do
     contact_list = create_contact_list
-    contact_list.delete_all_contacts
     contact_list.add_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -117,7 +113,6 @@ RSpec.describe ContactList do
 
   it "displays a list in alphabetical order by email" do
     contact_list = create_contact_list
-    contact_list.delete_all_contacts
     contact_list.add_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -144,7 +139,6 @@ RSpec.describe ContactList do
 
   it "search for a contact by last_name and view their details" do
     contact_list = create_contact_list
-    contact_list.delete_all_contacts
     contact_list.add_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -159,7 +153,6 @@ RSpec.describe ContactList do
 
   it "search for a contact by any key and view their details" do
     contact_list = create_contact_list
-    contact_list.delete_all_contacts
     contact_list.add_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -174,7 +167,6 @@ RSpec.describe ContactList do
 
   it "saves the contacts to a file" do
     contact_list = create_contact_list
-    contact_list.delete_all_contacts
     contact_list.add_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
@@ -185,7 +177,6 @@ RSpec.describe ContactList do
 
   it "loads contacts in first name order from the JSON file when restarting the program" do
     contact_list = create_contact_list
-    contact_list.delete_all_contacts
     contact_list.add_contact("Marion", "Faceless", "marion@example.com", 012344556)
     contact_list.add_contact("John", "Smith", "john@example.com", 012344556)
     contact_list.add_contact("Sarah", "Kharraz", "sarah@example.com", 012344556)
