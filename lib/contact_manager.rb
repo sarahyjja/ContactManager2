@@ -17,15 +17,15 @@ class ContactManager
   #   print "#{key}: #{value}."
   #   end
   # end
-  def create_new_contact
-    new_contact = Person.new(first_name, last_name, email, phone)
-    print "Add a new contact"
-    first_name = $stdin.gets.chomp
-    print "First name : #{first_name}"
-    last_name = $stdin.gets.chomp
-    print "Lsat name : #{last_name}"
-
-  end
+  # def create_new_contact
+  #   new_contact = Person.new(first_name, last_name, email, phone)
+  #   print "Add a new contact"
+  #   first_name = $stdin.gets.chomp
+  #   print "First name : #{first_name}"
+  #   last_name = $stdin.gets.chomp
+  #   print "Lsat name : #{last_name}"
+  #
+  # end
 
   # def sort_by(person_detail)
   #   #key = $stdin.gets.chomp

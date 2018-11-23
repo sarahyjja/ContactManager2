@@ -3,14 +3,10 @@ require 'json'
 
 class ContactList
 
-attr_accessor :list, :file_agenda
+attr_accessor :list
 
-  def initialize
-    file_agenda = File.read("./lib/file_agenda.json")
-    @list = JSON.load(file_agenda)
-    # self.get_contacts_from_file("./lib/file_agenda.json").each do |contact|
-    #   @list << contact
-    # end
+  def initialize(list)
+    @list = list
   end
 
   def get_contacts
@@ -18,8 +14,6 @@ attr_accessor :list, :file_agenda
   end
 
   def add_contact(first_name, last_name, email, phone)
-    # print "Add a new contact"
-    # new_contact = $stdin.gets.chomp
     new_contact = Person.new(first_name, last_name, email, phone)
     @list << {
         "first_name" => first_name,
@@ -27,22 +21,10 @@ attr_accessor :list, :file_agenda
         "email" => email,
         "phone" => phone
       }
-      # p @list
-      json_file = File.read("./lib/file_agenda.json")
-      current_contacts = JSON.load(json_file)
-      current_contacts << {
-          first_name: first_name,
-          last_name: last_name,
-          email: email,
-          phone: phone
-        }
-        delete_all_contacts
-        File.write("./lib/file_agenda.json", current_contacts.to_json)
   end
 
   def delete_all_contacts
-    File.open("./lib/file_agenda.json", 'w') {|file| file.truncate(0) }
-    File.write("./lib/file_agenda.json", "[]")
+    @list = []
   end
 
   def get_contacts_from_file(json_file)

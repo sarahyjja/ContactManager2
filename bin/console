@@ -8,7 +8,11 @@ require 'person'
 require 'contact_manager'
 require 'console'
 
-contact_list = ContactList.new
+file_agenda = File.read("./lib/file_agenda.json")
+list = JSON.load(file_agenda)
+
+contact_list = ContactList.new(list)
+
 # contact_list.add_new_contact(first_name, last_name, email, phone)
 #
 #   def console_contact

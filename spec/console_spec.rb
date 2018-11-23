@@ -20,7 +20,7 @@ RSpec.describe Console do
     contact_list = MockContactList.new
     input = StringIO.new("1")
     output = StringIO.new
-    console = Console.new(add_new_contact, input, output)
+    console = Console.new(contact_list, input, output)
 
     console.start
 
