@@ -19,5 +19,5 @@ contact_list = ContactList.new(list)
 #   end
 #
 
-console = Application.new(contact_list)
+console = Application.new(file_agenda, contact_list)
 console.start

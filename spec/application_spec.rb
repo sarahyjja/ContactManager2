@@ -4,12 +4,12 @@ require 'application'
 RSpec.describe Application do
 
   it 'ask to see the list of contacts' do
-    contact_list = MockContactList.new
+    #contact_list = MockContactList.new
     input = StringIO.new
     output = StringIO.new
     console = Application.new(contact_list, input, output)
     console.start
-    console.console_contact
+    console.console_contact(list)
     expect(output.contact_list).to match([])
   end
 

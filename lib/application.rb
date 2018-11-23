@@ -5,7 +5,7 @@ require 'person'
 class Application
 # contact_list = ContactList.new
 # contact_list.add_new_contact(first_name, last_name, email, phone)
-  def initialize(contact_list, input = $stdin, output = $stdout)
+  def initialize(file_agenda, contact_list, input = $stdin, output = $stdout)
     @contact_list = contact_list
     @input = input
     @output = output
@@ -31,7 +31,7 @@ class Application
     when 4.to_s #delete a contact
       delete_contact
     when 5.to_s #search by key/value
-      search_by
+      research
     else
       @output.puts("You broke me!")
     end
@@ -52,12 +52,23 @@ class Application
   def add_new_contact
     text = ""
       print "First name: "
-      text = @input.gets.strip.downcase.to_s + "\n"
+      first_name = @input.gets.strip.downcase.to_s + "\n"
       print "Last name: "
-      text = @input.gets.strip.downcase.to_s + "\n"
+      last_name = @input.gets.strip.downcase.to_s + "\n"
       print "Email: "
-      text = @input.gets.strip.downcase.to_s + "\n"
+      email = @input.gets.strip.downcase.to_s + "\n"
       print "Phone: "
-      text = @input.gets.chomp.to_i + "\n"
+      text = @input.gets.chomp.to_i
+      @contact_list.add_contact(first_name, last_name, email, phone)
+      file_agenda = File.write("./lib/file_agenda.json", current_contacts.to_json)
     end
+  def modify_contact
+    @output.puts("Nah")
+  end
+  def delete_contact
+    @output.puts("Nup")
+  end
+  def research
+    @output.puts("Nah again")
+  end
 end

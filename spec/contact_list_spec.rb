@@ -6,17 +6,12 @@ require 'person'
 require 'json'
 
 RSpec.describe ContactList do
-  let(:file_list) do
-    file_agenda = File.read("./lib/file_agenda.json")
-    list = JSON.load(file_agenda)
-  end
-
-    def create_contact_list(list = file_list)
-      ContactList.new(list)
+    def create_contact_list
+      ContactList.new([])
     end
 
   it "can be initialized with an empty list" do
-    contact_list = create_contact_list([])
+    contact_list = create_contact_list
 
     expect(contact_list.list).to eq([])
   end
