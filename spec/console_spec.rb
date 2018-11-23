@@ -2,32 +2,29 @@ require 'stringio'
 require 'console'
 
 RSpec.describe Console do
+
   it 'ask to see the list of contacts' do
     contact_list = MockContactList.new
     input = StringIO.new
     output = StringIO.new
     console = Console.new(contact_list, input, output)
-
+    console.start
     console.console_contact
-
-    expect(output.string).to match("Firstname: Joe\n")
-    expect(output.string).to match("Lastname : Bloggs\n")
-    expect(output.string).to match("Email    : joe.bloggs@example.com\n")
-    expect(output.string).to match("Phone    : 12345678901\n\n")
+    expect(output.contact_list).to match([])
   end
 
   it 'ask to add a contact' do
-    contact_list = MockContactList.new
+    #contact_list = MockContactList.new
     input = StringIO.new("1")
     output = StringIO.new
     console = Console.new(contact_list, input, output)
 
     console.start
 
-    expect(output.string).to match("first name")
-    expect(output.string).to match("last name")
-    expect(output.string).to match("email")
-    expect(output.string).to match("phone")
+    expect(output.string).to match("Firstname: Joe\n")
+    expect(output.string).to match("Lastname : Bloggs\n")
+    expect(output.string).to match("Email    : joe.bloggs@example.com\n")
+    expect(output.string).to match("Phone    : 12345678901\n\n")
   end
 end
 

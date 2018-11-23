@@ -1,6 +1,6 @@
 require 'contact_list'
 require 'person'
-require 'contact_manager'
+require 'console'
 
 class Console
 # contact_list = ContactList.new
