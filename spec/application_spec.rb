@@ -1,13 +1,13 @@
 require 'stringio'
-require 'console'
+require 'application'
 
-RSpec.describe Console do
+RSpec.describe Application do
 
   it 'ask to see the list of contacts' do
     contact_list = MockContactList.new
     input = StringIO.new
     output = StringIO.new
-    console = Console.new(contact_list, input, output)
+    console = Application.new(contact_list, input, output)
     console.start
     console.console_contact
     expect(output.contact_list).to match([])
@@ -17,7 +17,7 @@ RSpec.describe Console do
     #contact_list = MockContactList.new
     input = StringIO.new("1")
     output = StringIO.new
-    console = Console.new(contact_list, input, output)
+    console = Application.new(contact_list, input, output)
 
     console.start
 

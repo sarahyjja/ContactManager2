@@ -1,8 +1,8 @@
 require 'contact_list'
 require 'person'
-require 'console'
+#require 'console'
 
-class Console
+class Application
 # contact_list = ContactList.new
 # contact_list.add_new_contact(first_name, last_name, email, phone)
   def initialize(contact_list, input = $stdin, output = $stdout)
