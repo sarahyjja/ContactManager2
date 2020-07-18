@@ -5,7 +5,19 @@ $: << File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'contact_list'
 require 'person'
-require 'contact_manager'
+require 'application'
 
-contact_list = ContactList.new
-contact_list.add_new_contact(first_name, last_name, email, phone)
+file_agenda = File.read("./lib/file_agenda.json")
+list = JSON.load(file_agenda)
+
+contact_list = ContactList.new(list)
+
+# contact_list.add_new_contact(first_name, last_name, email, phone)
+#
+#   def console_contact
+#
+#   end
+#
+
+console = Application.new(file_agenda, contact_list)
+console.start
